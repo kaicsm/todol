@@ -14,7 +14,6 @@ class ThemeController extends GetxController {
   void changeTheme(ThemeMode themeMode) {
     currentTheme.value = themeMode;
     Get.changeThemeMode(currentTheme.value);
-    updateSystemUiOverlayStyle();
   }
 
   void updateSystemUiOverlayStyle() {

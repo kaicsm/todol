@@ -13,6 +13,14 @@ class HomeController extends GetxController {
     }
   }
 
+  @override
+  void onInit() {
+    super.onInit();
+
+    // Save todos to storage when todos list changes
+    debounce(todos, (_) => saveTodos(), time: Duration(milliseconds: 500));
+  }
+
   void addTodo(Todo todo) {
     todos.add(todo);
   }
@@ -26,7 +34,8 @@ class HomeController extends GetxController {
   }
 
   void saveTodos() {
-    List<Map<String, dynamic>> todosJson = todos.map((todo) => todo.toJson()).toList();
+    List<Map<String, dynamic>> todosJson =
+        todos.map((todo) => todo.toJson()).toList();
     storage.write('todos', todosJson);
   }
 

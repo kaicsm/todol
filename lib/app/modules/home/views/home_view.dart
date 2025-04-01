@@ -27,14 +27,10 @@ class HomeView extends StatelessWidget {
               completed: controller.todos[index].completed!,
               onChanged: (value) {
                 controller.todos[index].completed = value;
-                controller.saveTodos();
-
                 controller.todos.refresh();
               },
               onDelete: () {
                 controller.removeTodo(controller.todos[index]);
-                controller.saveTodos();
-
                 controller.todos.refresh();
               },
             );
